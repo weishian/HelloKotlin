@@ -2,6 +2,18 @@ package net.macdidi5.basic
 
 import net.macdidi5.other.average
 
+class Item01 (val id: Long = 0,
+              var title: String = "",
+              var content: String = "") {
+
+    init {
+        title = if (title.isEmpty()) "Title required" else title
+        content = if (content.isEmpty()) "Content required" else content
+    }
+
+    fun getDetails() = "Item02(id=$id, title=$title, content=$content)"
+}
+
 fun main(args: Array<String>) {
     val a = average(3, 5, 7)
     println("Average: $a")
@@ -40,10 +52,16 @@ fun main(args: Array<String>) {
     """.trimMargin()
     println(literal2)
 
-    var name: String? = null
+    var name: String? = "123"
     println("name.isNullOrBlank(): ${name.isNullOrBlank()}")
     println("name.isNullOrEmpty(): ${name.isNullOrEmpty()}")
 
     println("name.isBlank(): ${name?.isBlank()}")
     println("name.isEmpty(): ${name?.isEmpty()}")
+
+    val item01 = Item01(1, "Hello", "Hello Kotlin!")
+    println("Item01(id=${item01.id}, title=${item01.title}, content=${item01.content})")
+
+
+
 }
